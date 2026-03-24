@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f9; display: flex; justify-content: center; padding: 20px; }
+        .payment-card { background: white; width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: #2196F3; color: white; text-align: center; padding: 15px; font-weight: bold; font-size: 1.2em; }
+        .content { padding: 20px; }
+        .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .label { color: #555; font-size: 0.9em; }
+        .value { font-weight: bold; color: #333; }
+        .copy-btn { color: #2196F3; border: 1px solid #2196F3; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8em; text-transform: uppercase; font-weight: bold; }
+        .copy-btn:hover { background: #e3f2fd; }
+    </style>
+</head>
+<body>
+
+<div class="payment-card">
+    <div class="header">Payment Details</div>
+    <div class="content">
+        <!-- Amount Row -->
+        <div class="row">
+            <div class="label">Amount</div>
+            <div class="value">₹ <span id="amt">3500</span></div>
+            <div class="copy-btn" onclick="copyValue('amt')">Copy</div>
+        </div>
+
+        <!-- UPI ID Row -->
+        <div class="row">
+            <div class="label">VPA/UPI ID</div>
+            <div class="value" id="upi">akash7****@ybl</div>
+            <div class="copy-btn" onclick="copyValue('upi')">Copy</div>
+        </div>
+
+        <p style="font-size: 0.85em; color: #666; text-align: center;">Click "Copy" to use the details in your payment app.</p>
+    </div>
+</div>
+
+<script>
+    function copyValue(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Copied: " + text);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
